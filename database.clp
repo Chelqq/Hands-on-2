@@ -64,7 +64,7 @@
     (retract (Enfermedad (id ?id)))
 )
 
-
+;need to insert dis line by line 
 (assert (Enfermedad (id 1) (nombre Resfriado) (signos fiebre congestión_nasal) (sintomas tos dolor_garganta)))
 (assert (Enfermedad (id 2) (nombre Gripe) (signos fiebre cansancio) (sintomas dolor_cabeza escalofríos)))
 (assert (Enfermedad (id 3) (nombre Alergia) (signos estornudos picazón) (sintomas congestión_nasal ojos_llorosos)))

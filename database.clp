@@ -5,7 +5,7 @@
     (multislot sintomas (type SYMBOL))
 )
 
-(deffacts BaseConocimientos
+(deffacts BasedeConocimientos
     (Enfermedad (id 1) (nombre Resfriado) (signos fiebre congestion_nasal) (sintomas tos dolor_garganta))
     (Enfermedad (id 2) (nombre Gripe) (signos fiebre cansancio) (sintomas dolor_cabeza escalofrios))
     (Enfermedad (id 3) (nombre Alergia) (signos estornudos picazon) (sintomas congestion_nasal ojos_llorosos))
@@ -16,26 +16,26 @@
 
 (defrule ConsultarEnfermedad
     =>
-    (printout t "Por favor, ingrese el ID de la enfermedad que desea consultar: ")
+    (printout t "Ingresar ID para verificar enfermedad")
     (bind ?id (read))
     (Enfermedad (id ?id) (nombre ?nombre) (signos $?signos) (sintomas $?sintomas))
     =>
     (printout t "------------------------------------" crlf)
-    (printout t "Enfermedad encontrada: " ?nombre " (ID: " ?id ")" crlf)
+    (printout t "Enfermedad: " ?nombre " (ID: " ?id ")" crlf)
     (printout t "------------------------------------" crlf)
-    (printout t "Signos: " ?signos crlf)
     (printout t "Sintomas: " ?sintomas crlf)
+    (printout t "Signos: " ?signos crlf)
     (printout t "------------------------------------" crlf)
 )
 
 (defrule ConsultarSignos
     =>
-    (printout t "Por favor, ingrese el ID de la enfermedad para consultar sus signos: ")
+    (printout t "Ingresar ID para verificar signos")
     (bind ?id (read))
     (Enfermedad (id ?id) (nombre ?nombre) (signos $?signos))
     =>
     (printout t "------------------------------------" crlf)
-    (printout t "Signos de la enfermedad " ?nombre " (ID: " ?id ")" crlf)
+    (printout t "Signos de: " ?nombre " (ID: " ?id ")" crlf)
     (printout t "------------------------------------" crlf)
     (printout t ?signos crlf)
     (printout t "------------------------------------" crlf)
@@ -43,24 +43,24 @@
 
 (defrule ConsultarSintomas
     =>
-    (printout t "Por favor, ingrese el ID de la enfermedad para consultar sus sintomas: ")
+    (printout t "Ingresar ID para verificar sintomas")
     (bind ?id (read))
     (Enfermedad (id ?id) (nombre ?nombre) (sintomas $?sintomas))
     =>
     (printout t "------------------------------------" crlf)
-    (printout t "Sintomas de la enfermedad " ?nombre " (ID: " ?id ")" crlf)
+    (printout t "Sintomas de " ?nombre " (ID: " ?id ")" crlf)
     (printout t "------------------------------------" crlf)
     (printout t ?sintomas crlf)
     (printout t "------------------------------------" crlf)
 )
 
-(defrule EliminarEnfermedad
+(defrule DeletById
     =>
-    (printout t "Por favor, ingrese el ID de la enfermedad que desea eliminar: ")
+    (printout t "Ingresar ID de enfermedad: ")
     (bind ?id (read))
     (Enfermedad (id ?id))
     =>
-    (printout t "Eliminando enfermedad con ID: " ?id crlf)
+    (printout t "Enfermedad con ID: " ?id crlf)
     (retract (Enfermedad (id ?id)))
 )
 
